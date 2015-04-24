@@ -46,10 +46,10 @@
 			replace: true,
 			template: '<div data-ng-show="data.displayed"><ul style="float: left;">' +
 				'<li ng-repeat="dir in data.dirs" data-ng-click="displayNext($index)"' +
-				'data-ng-class="{\'selected\': dir.selected}">* {{dir.name}} >' +
+				'data-ng-class="{\'selected\': dir.selected}"><i class="tf_folder"></i>{{dir.name}} >' +
 				'</li>' +
 				'<li ng-repeat="file in data.files" data-ng-click="select(file, $index)"' +
-				'data-ng-class="{\'selected\': file.selected}">- {{file.name}}</li>' +
+				'data-ng-class="{\'selected\': file.selected}"><i class="tf_file"></i>{{file.name}}</li>' +
 				'</ul>' +
 				'<finder-tree ng-repeat="dir in data.dirs" data="dir" level="level"></finder-tree>' +
 				'</div>',
@@ -114,7 +114,9 @@
 						scope.resetFileDisplay();
 						scope.resetDisplay(scope.data.dirs);
 						scope.data.files[index].selected = true;
-						file.path = scope.getPath();
+						var path = scope.getPath();
+						path.push(file.name);
+						file.path = path;
 						controller.$setViewValue(file);
 						controller.$render();
 					};
@@ -134,7 +136,11 @@
 					scope.getPath = function () {
 						var targetScope = this;
 						var path = [];
-						path.push(targetScope.data.name);
+						if (targetScope.hasOwnProperty('data')) {
+							if (targetScope.data.hasOwnProperty('name')) {
+								path.push(targetScope.data.name);
+							}
+						}
 						if (targetScope.$parent.hasOwnProperty('level')) {
 							while (targetScope.$parent.level !== 0) {
 								targetScope = targetScope.$parent;
