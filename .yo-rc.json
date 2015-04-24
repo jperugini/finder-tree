@@ -1,0 +1,28 @@
+{
+  "generator-angularjs-library": {
+    "props": {
+      "author": {
+        "name": "Julien Peru",
+        "email": "julien.perugini@gmail.com"
+      },
+      "libraryName": {
+        "original": "finderTree",
+        "camelized": "finderTree",
+        "dasherized": "finder-tree",
+        "slugified": "findertree",
+        "parts": [
+          "findertree"
+        ]
+      },
+      "includeModuleDirectives": true,
+      "includeModuleFilters": true,
+      "includeModuleServices": true,
+      "includeAngularModuleResource": true,
+      "includeAngularModuleCookies": false,
+      "includeAngularModuleSanitize": true,
+      "librarySrcDirectory": "src/finder-tree",
+      "libraryUnitTestDirectory": "test/unit/finder-tree",
+      "libraryUnitE2eDirectory": "test/e2e/finder-tree"
+    }
+  }
+}
