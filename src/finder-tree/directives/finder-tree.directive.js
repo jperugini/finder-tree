@@ -85,7 +85,8 @@
 						scope.resetFileDisplay();
 						scope.resetDisplay(scope.data.dirs);
 						scope.data.files[index].selected = true;
-						controller.$setViewValue(file.name);
+						file.path = scope.getPath();
+						controller.$setViewValue(file);
 						controller.$render();
 					};
 
@@ -99,6 +100,21 @@
 						} else {
 							return this;
 						}
+					};
+
+					scope.getPath = function () {
+						var targetScope = this;
+						var path = [];
+						path.push(targetScope.data.name);
+						if (targetScope.$parent.hasOwnProperty('level')) {
+							while (targetScope.$parent.level !== 0) {
+								targetScope = targetScope.$parent;
+								if (targetScope.hasOwnProperty('data')) {
+									path.push(targetScope.data.name);
+								}
+							}
+						}
+						return path.reverse();
 					};
 				});
 			}

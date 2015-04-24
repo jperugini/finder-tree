@@ -19,9 +19,10 @@
 <body ng-controller="DemoCtrl as demo">
 
 	<div data-ng-cloak class="test">
-		<p>Selected: {{bite}}</p>
+		<p>Selected: {{testSelect.name}}</p>
+		<p>Path: {{testSelect.path}}</p>
 		
-		<finder-tree data="demo.test" ng-model="bite"></finder-tree>
+		<finder-tree data="demo.test" ng-model="testSelect"></finder-tree>
 
 	</div>
 
