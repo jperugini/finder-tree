@@ -30,7 +30,7 @@
 							'name': 'Hello/sub',
 							'dirs': [],
 							'files': [{
-								'name': 'Hello/Sub2'
+								'name': 'Very very very long Hello/Sub2'
 							}]
 						}],
 					'files': [{
@@ -48,7 +48,7 @@
 					}]
 				},
 				{
-					'name': 'Hello',
+					'name': 'Very very very long Hello',
 					'dirs': [{
 						'name': 'Hello/sub',
 						'dirs': [],

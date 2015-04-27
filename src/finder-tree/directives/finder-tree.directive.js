@@ -13,7 +13,8 @@
 			},
 			transclude: true,
 			replace: true,
-			template: '<div><finder-tree-wrapped data="data" ng-model="dataModel" data-ng-transclude></finder-tree-wrapped>' +
+			template: '<div>' +
+			'<finder-tree-wrapped data="data" ng-model="dataModel" data-ng-transclude></finder-tree-wrapped>' +
 			'<p class="ft_clear"></p><div>'
 		};
 	}

@@ -16,7 +16,8 @@
 			},
 			replace: true,
 			transclude: true,
-			template: '<div data-ng-show="data.displayed"><ul style="float: left;">' +
+			template: '<div data-ng-show="data.displayed" class="finder-tree">' +
+				'<ul style="float: left;" resizable r-directions="[\'right\']">' +
 				'<li ng-repeat="dir in data.dirs" data-ng-click="displayNext($index)"' +
 				'data-ng-class="{\'ft_selected\': dir.selected}">' + 
 				'<i class="ft_folder"></i>' + 
