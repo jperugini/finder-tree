@@ -20,7 +20,7 @@
           'finderTree.directives',
           'finderTree.filters',
           'finderTree.services',
-	  	  'RecursionHelper',
+	  	  'RecursionHelper'
 //          'ngResource',
 //          'ngSanitize'
       ]);
