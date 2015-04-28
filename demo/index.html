@@ -21,8 +21,15 @@
 <body ng-controller="DemoCtrl as demo">
 
 	<div data-ng-cloak class="content">
+		
+		<h2>Raw Finder-Tree</h2>
+		
 		<p>Selected: {{demo.testSelect.name}}</p>
 		<p>Path: {{demo.testSelect.path}}</p>
+		
+		<finder-tree data="demo.test" ng-model="demo.testSelect" style="height: 200px;"></finder-tree>
+		
+		<h2>Templated Finder-Tree</h2>
 
 		<div class="panel panel-default">
 			<div class="panel-heading">
