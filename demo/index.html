@@ -14,20 +14,43 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="demo.css">
 	<link rel="stylesheet" type="text/css" href="../dist/finder-tree.css">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 </head>
 
 <body ng-controller="DemoCtrl as demo">
 
 	<div data-ng-cloak class="content">
-		<p>Selected: {{testSelect.name}}</p>
-		<p>Path: {{testSelect.path}}</p>
+		<p>Selected: {{demo.testSelect.name}}</p>
+		<p>Path: {{demo.testSelect.path}}</p>
 
-		<finder-tree data="demo.test" ng-model="testSelect"></finder-tree>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<strong>Folder directory</strong>
+			</div>
+			<div class="panel-body">
 
-	</div>
-	
-	<div style="margin-top:10px;">
-		Test next paragraph
+				<div class="ft-firstRow">
+					<img src="http://whiteappleer.tw/wp-content/uploads/2011/05/Apple-Mac-OS-X-HardDrive-HDD-icon.png" width="15" height="15" /> Hard Drive
+				</div>
+
+				<finder-tree data="demo.test" ng-model="demo.testSelect" style="height: 300px;"></finder-tree>
+				<div class="ft-footer">
+					<img src="http://whiteappleer.tw/wp-content/uploads/2011/05/Apple-Mac-OS-X-HardDrive-HDD-icon.png" width="15" height="15" /> Hard Drive
+					<i class="mac_caret_right"></i>
+					<span data-ng-repeat="item in demo.testSelect.path track by $index">
+						<i class="ft_folder"></i>{{item}}<i class="mac_caret_right"></i>
+					</span>
+					<span ng-if="demo.testSelect.name">
+						<i class="ft_file"></i>{{demo.testSelect.name}}
+					</span>
+				</div>
+			</div>
+			<div class="panel-footer">
+				{{demo.testSelect.itemNumber}} items
+			</div>
+		</div>
+
 	</div>
 
 	<!-- In production use:

@@ -13,9 +13,9 @@
 			},
 			transclude: true,
 			replace: true,
-			template: '<div>' +
-			'<finder-tree-wrapped data="data" ng-model="dataModel" data-ng-transclude></finder-tree-wrapped>' +
-			'<p class="ft_clear"></p><div>'
+			template: '<div style="overflow: auto; white-space: nowrap;">' +
+				'<finder-tree-wrapped data="data" ng-model="dataModel" data-ng-transclude></finder-tree-wrapped>' +
+				'</div>'
 		};
 	}
 

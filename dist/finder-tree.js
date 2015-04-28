@@ -162,14 +162,15 @@
 			replace: true,
 			transclude: true,
 			template: '<div data-ng-show="data.displayed" class="finder-tree">' +
-				'<ul style="float: left;" resizable r-directions="[\'right\']">' +
+				'<ul resizable r-directions="[\'right\']">' +
 				'<li ng-repeat="dir in data.dirs" data-ng-click="displayNext($index)"' +
 				'data-ng-class="{\'ft_selected\': dir.selected}">' + 
 				'<i class="ft_folder"></i>' + 
 				'<span class="ft_span_text">{{dir.name}}</span>' +
 				'<i data-ng-class="dir.selected ? \'ft_caret_right_selected\' : \'ft_caret_right\'"></i></li>' +
 				'<li ng-repeat="file in data.files" data-ng-click="select(file, $index)"' +
-				'data-ng-class="{\'ft_selected\': file.selected}"><i class="ft_file"></i><span>{{file.name}}</span></li>' +
+				'data-ng-class="{\'ft_selected\': file.selected}"><i class="ft_file"></i>' +
+				'<span class="ft_span_text_file">{{file.name}}</span></li>' +
 				'</ul>' +
 				'<finder-tree-wrapped ng-repeat="dir in data.dirs" data="dir" level="level"></finder-tree-wrapped>' +
 				'</div>',
@@ -192,15 +193,22 @@
 						scope.level = scope.level + 1;
 					}
 
-					if (scope.level === undefined) {
-						scope.data.displayed = true;
-					}
-
 					scope.displayNext = function (index) {
 						scope.resetDisplay(scope.data.dirs, index);
 						scope.resetFileDisplay();
 						scope.data.dirs[index].displayed = true;
 						scope.data.dirs[index].selected = true;
+						// Set the path
+						var path = scope.getPath();
+						// Push current dir
+						path.push(scope.data.dirs[index].name);
+						// Number of item in current dir
+						var itemNumber = scope.data.dirs[index].dirs.length + scope.data.dirs[index].files.length;
+						var file = {};
+						file.path = path;
+						file.itemNumber = itemNumber;
+						controller.$setViewValue(file);
+						controller.$render();
 					};
 
 					scope.resetDisplay = function (objectToReset, index) {
@@ -235,8 +243,10 @@
 						scope.resetDisplay(scope.data.dirs);
 						scope.data.files[index].selected = true;
 						var path = scope.getPath();
-						path.push(file.name);
 						file.path = path;
+						// Number of item in current dir
+						var itemNumber = scope.data.dirs.length + scope.data.files.length;
+						file.itemNumber = itemNumber;
 						controller.$setViewValue(file);
 						controller.$render();
 					};
@@ -292,9 +302,9 @@
 			},
 			transclude: true,
 			replace: true,
-			template: '<div>' +
-			'<finder-tree-wrapped data="data" ng-model="dataModel" data-ng-transclude></finder-tree-wrapped>' +
-			'<p class="ft_clear"></p><div>'
+			template: '<div style="overflow: auto; white-space: nowrap;">' +
+				'<finder-tree-wrapped data="data" ng-model="dataModel" data-ng-transclude></finder-tree-wrapped>' +
+				'</div>'
 		};
 	}
 

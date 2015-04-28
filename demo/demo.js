@@ -8,6 +8,9 @@
 
 		/* jshint validthis: true */
 		var vm = this;
+		
+		vm.testSelect = {}
+		vm.testSelect.itemNumber = 4;
 
 		vm.test = {
 			'dirs': [

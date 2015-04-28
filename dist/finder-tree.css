@@ -77,31 +77,44 @@
   top: 0;
   margin-left: -7px; }
 
-.finder-tree ul {
-  font-size: large;
-  list-style-type: none;
-  padding: 0;
-  margin: 0 15px 0 0;
-  width: 150px;
-  height: 100%; }
-.finder-tree li {
-  padding: 0;
-  margin: 0;
-  cursor: pointer;
-  overflow: hidden;
-  white-space: nowrap; }
+.finder-tree {
+  height: inherit;
+  display: inline-block;
+  vertical-align: top; }
+  .finder-tree ul {
+    display: inline-block;
+    font-size: large;
+    list-style-type: none;
+    padding: 0;
+    margin: 0 15px 0 0;
+    width: 150px;
+    height: 100%; }
+  .finder-tree li {
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    width: inherit; }
 
 .ft_clear {
   clear: both; }
 
 .ft_selected {
-  background-color: aqua; }
+  background-color: #d5d5d5; }
 
 .ft_span_text {
   text-overflow: ellipsis;
   overflow: hidden;
   display: inline-block;
-  width: 60%;
+  width: 74%;
+  vertical-align: middle; }
+
+.ft_span_text_file {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: inline-block;
+  width: 80%;
   vertical-align: middle; }
 
 .ft_folder {
