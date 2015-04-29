@@ -164,8 +164,8 @@
 			template: '<div data-ng-show="data.displayed" class="finder-tree">' +
 				'<ul resizable r-directions="[\'right\']">' +
 				'<li ng-repeat="dir in data.dirs" data-ng-click="displayNext($index)"' +
-				'data-ng-class="{\'ft_selected\': dir.selected}">' + 
-				'<i class="ft_folder"></i>' + 
+				'data-ng-class="{\'ft_selected\': dir.selected}">' +
+				'<i class="ft_folder"></i>' +
 				'<span class="ft_span_text">{{dir.name}}</span>' +
 				'<i data-ng-class="dir.selected ? \'ft_caret_right_selected\' : \'ft_caret_right\'"></i></li>' +
 				'<li ng-repeat="file in data.files" data-ng-click="select(file, $index)"' +
@@ -281,6 +281,14 @@
 						}
 						return path.reverse();
 					};
+
+					scope.$watch('data', function (newV, oldV) {
+						scope.resetDisplay(oldV.dirs);
+						scope.data = newV;
+						if (scope.level === 0) {
+							scope.data.displayed = true;
+						}
+					});
 				});
 			}
 		};
@@ -304,7 +312,12 @@
 			replace: true,
 			template: '<div style="overflow: auto; white-space: nowrap;">' +
 				'<finder-tree-wrapped data="data" ng-model="dataModel" data-ng-transclude></finder-tree-wrapped>' +
-				'</div>'
+				'</div>',
+			link: function(scope, element, attrs) {
+				scope.$watch('data', function(newV, oldV) {
+					scope.data = newV;
+				});
+			}
 		};
 	}
 

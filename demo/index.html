@@ -12,38 +12,42 @@
 	<title>Finder Tree</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="demo.css">
 	<link rel="stylesheet" type="text/css" href="../dist/finder-tree.css">
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="demo.css">
 </head>
 
 <body ng-controller="DemoCtrl as demo">
 
 	<div data-ng-cloak class="content">
-		
+
 		<h2>Raw Finder-Tree</h2>
-		
+
 		<p>Selected: {{demo.testSelect.name}}</p>
 		<p>Path: {{demo.testSelect.path}}</p>
-		
-		<finder-tree data="demo.test" ng-model="demo.testSelect" style="height: 200px;"></finder-tree>
-		
+
+		<finder-tree data="demo.hardDrive" ng-model="demo.testSelect" style="height: 200px;font-size: large;"></finder-tree>
+
 		<h2>Templated Finder-Tree</h2>
 
-		<div class="panel panel-default">
+		<div class="panel panel-default" data-ng-init="demo.selectedFolder = demo.listFolder[0]">
 			<div class="panel-heading">
-				<strong>Folder directory</strong>
+				<strong>{{demo.testSelect.path.slice(-1)[0] || demo.selectedFolder.name}}</strong>
 			</div>
 			<div class="panel-body">
 
 				<div class="ft-firstRow">
-					<img src="http://whiteappleer.tw/wp-content/uploads/2011/05/Apple-Mac-OS-X-HardDrive-HDD-icon.png" width="15" height="15" /> Hard Drive
+					<ul class="list-group">
+						<li class="list-group-item" data-ng-repeat="folder in demo.listFolder" data-ng-class="{ 'active': folder.active }" data-ng-click="demo.selectFolder(folder)">
+							<img data-ng-src="{{folder.img}}" width="20" height="20" /> {{folder.name}}
+						</li>
+					</ul>
 				</div>
 
-				<finder-tree data="demo.test" ng-model="demo.testSelect" style="height: 300px;"></finder-tree>
+				<finder-tree data="demo.selectedFolder.structure" ng-model="demo.testSelect" style="height: 300px;"></finder-tree>
 				<div class="ft-footer">
-					<img src="http://whiteappleer.tw/wp-content/uploads/2011/05/Apple-Mac-OS-X-HardDrive-HDD-icon.png" width="15" height="15" /> Hard Drive
+					<img data-ng-src="{{demo.selectedFolder.img}}" /> {{demo.selectedFolder.name}}
 					<i class="mac_caret_right"></i>
 					<span data-ng-repeat="item in demo.testSelect.path track by $index">
 						<i class="ft_folder"></i>{{item}}<i class="mac_caret_right"></i>

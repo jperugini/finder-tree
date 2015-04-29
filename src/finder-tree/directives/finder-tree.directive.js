@@ -15,7 +15,12 @@
 			replace: true,
 			template: '<div style="overflow: auto; white-space: nowrap;">' +
 				'<finder-tree-wrapped data="data" ng-model="dataModel" data-ng-transclude></finder-tree-wrapped>' +
-				'</div>'
+				'</div>',
+			link: function(scope, element, attrs) {
+				scope.$watch('data', function(newV, oldV) {
+					scope.data = newV;
+				});
+			}
 		};
 	}
 

@@ -8,11 +8,13 @@
 
 		/* jshint validthis: true */
 		var vm = this;
-		
+
 		vm.testSelect = {}
 		vm.testSelect.itemNumber = 4;
 
-		vm.test = {
+		vm.selectFolder = selectFolder;
+
+		vm.hardDrive = {
 			'dirs': [
 				{
 					'name': 'Hello',
@@ -67,6 +69,100 @@
 			'files': [{
 				'name': 'Hello/Sub1'
 			}]
+		};
+
+		vm.homeFolder = {
+			'dirs': [
+				{
+					'name': 'Documents',
+					'dirs': [{
+							'name': 'Hello/sub',
+							'dirs': [{
+								'name': 'Hello/sub',
+								'dirs': [],
+								'files': [{
+									'name': 'Hello/Sub1'
+								}]
+						}],
+							'files': [{
+								'name': 'Hello/Sub1'
+							}]
+						},
+						{
+							'name': 'Hello/sub',
+							'dirs': [],
+							'files': [{
+								'name': 'Very very very long Hello/Sub2'
+							}]
+						}],
+					'files': [{
+						'name': 'Hello/1'
+					}, {
+						'name': 'Hello/2'
+					}]
+				}, {
+					'name': 'Pictures',
+					'dirs': [],
+					'files': [{
+						'name': 'Test/1'
+					}, {
+						'name': 'Test/2'
+					}]
+				},
+				{
+					'name': 'Videos',
+					'dirs': [{
+						'name': 'Hello/sub',
+						'dirs': [],
+						'files': [{
+							'name': 'Hello/Sub1'
+						}]
+						}],
+					'files': [{
+						'name': 'Hello/1'
+					}]
+				},
+				{
+					'name': 'finder-tree',
+					'dirs': [{
+						'name': 'Hello/sub',
+						'dirs': [],
+						'files': [{
+							'name': 'Hello/Sub1'
+						}]
+						}],
+					'files': [{
+						'name': 'Hello/1'
+					}]
+				}
+			],
+			'files': [{
+				'name': 'home-script.sh'
+			}]
+		};
+
+		vm.listFolder = [{
+			'name': "Hard Drive",
+			'img': "img/hd.png",
+			'numberItem': 4,
+			'structure': vm.hardDrive
+		}, {
+			'name': "Home",
+			'img': "img/home.png",
+			'numberItem': 5,
+			'structure': vm.homeFolder
+		}];
+
+		vm.listFolder[0].active = true;
+
+		function selectFolder(folder) {
+			angular.forEach(vm.listFolder, function (folder) {
+				folder.active = undefined;
+			});
+			folder.active = true;
+			vm.testSelect = {};
+			vm.selectedFolder = folder;
+			vm.testSelect.itemNumber = folder.numberItem;
 		};
 	}
 

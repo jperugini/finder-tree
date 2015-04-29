@@ -8,12 +8,27 @@
 }
 
 .ft-firstRow {
-	padding: 5px 5px 5px 5px;
 	float: left;
 	width: 150px;
 	height: 330px;
 	background-color: #dde4eb;
 	border-right: 1px solid #c5c6ca;
+}
+
+.list-group-item {
+	border: none;
+	background-color:transparent;
+	cursor: pointer;
+}
+
+.list-group-item:first-child {
+  border-top-right-radius: 0px !important;
+  border-top-left-radius: 0px !important;
+}
+
+.list-group-item:last-child {
+  border-bottom-right-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
 }
 
 .ft-footer {

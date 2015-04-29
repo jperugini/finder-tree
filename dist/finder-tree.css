@@ -83,7 +83,6 @@
   vertical-align: top; }
   .finder-tree ul {
     display: inline-block;
-    font-size: large;
     list-style-type: none;
     padding: 0;
     margin: 0 15px 0 0;
@@ -93,9 +92,10 @@
     padding: 0;
     margin: 0;
     cursor: pointer;
-    overflow: hidden;
+    text-overflow: ellipsis;
     white-space: nowrap;
-    width: inherit; }
+    width: inherit;
+    position: relative; }
 
 .ft_clear {
   clear: both; }
@@ -107,14 +107,16 @@
   text-overflow: ellipsis;
   overflow: hidden;
   display: inline-block;
-  width: 74%;
+  width: inherit;
+  padding-right: 45px;
   vertical-align: middle; }
 
 .ft_span_text_file {
   text-overflow: ellipsis;
   overflow: hidden;
   display: inline-block;
-  width: 80%;
+  width: inherit;
+  padding-right: 35px;
   vertical-align: middle; }
 
 .ft_folder {
@@ -131,10 +133,16 @@
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAMAAAAMCGV4AAAAhFBMVEUAAADX19fY2Nja2trb29vf39/l5eXp6en////v7+/q6urCwsLj4+Pq6urn5+fa2trv7+/g4ODi4uLt7e3W1tbV1dXX19fV1dWYmJidnZ2hoaGlpaWnp6e8vLyRkZGTk5OUlJSVlZWWlpaXl5eYmJiampqtra26urrDw8PMzMzNzc3R0dH8FnSdAAAAHnRSTlMAAAAAAAAAAAILDRAdHmVnb4+XtODj5O39/v7+/v4LPP7IAAAAYklEQVQI12NgYGTg5WBABvyaggwM7Ai+qKq6mDADG5wvoiAnpSHEw8AK48vLKUuqafMh5BWUFRWkZcW5mGF8FRVleUUZbW5OBF9JSVFCSwCHPFQ/Cw7zUe1Hdx+a+5lQ/AcAdCkLh+qdo8MAAAAASUVORK5CYII=) no-repeat right center;
   padding: 10px 7.5px 10px 7.5px;
   position: absolute;
-  right: 0; }
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto; }
 
 .ft_caret_right_selected {
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAMAAAAMCGV4AAAAh1BMVEUAAADX19fY2Nja2trb29vf39/l5eXp6emAgIBvb29paWk/Pz9iYmJpaWlmZmZYWFhvb29fX19hYWFtbW1UVFRTU1NVVVVTU1MTExMYGBgcHBwhISEjIyM5OTkMDAwODg4PDw8QEBARERESEhITExMVFRUpKSk3NzdAQEBKSkpLS0tPT0/////3DWbBAAAAHnRSTlMAAAAAAAAAAAILDRAdHmVnb4+XtODj5O39/v7+/v4LPP7IAAAAYklEQVQI12NgYGTg5WBABvyaggwM7Ai+qKq6mDADG5wvoiAnpSHEw8AK48vLKUuqafMh5BWUFRWkZcW5mGF8FRVleUUZbW5OBF9JSVFCSwCHPFQ/Cw7zUe1Hdx+a+5lQ/AcAdCkLh+qdo8MAAAAASUVORK5CYII=) no-repeat right center;
   padding: 10px 7.5px 10px 7.5px;
   position: absolute;
-  right: 0; }
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto; }
