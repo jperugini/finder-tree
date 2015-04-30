@@ -21,13 +21,21 @@
 				// Watch change of ngModel
 				scope.$watch(
 					function () {
-						return controller.$modelValue.path;
+						return controller.$modelValue;
 					},
 					function (newValue, oldValue) {
-						if (angular.isDefined(oldValue) && angular.isDefined(newValue)) {
-							if (oldValue.length > newValue.length) {
+						if (angular.isDefined(oldValue.path) && angular.isDefined(newValue.path)) {
+							if (oldValue.path.length > newValue.path.length) {
 								scope.$$childHead.resetDisplay(scope.data.dirs);
-								stepToPath(scope.data.dirs, newValue.slice());
+								stepToPath(scope.data.dirs, newValue.path.slice());
+								if (newValue.name === oldValue.name) {
+									scope.$$childHead.resetFileDisplay(scope.data);
+									var file = {};
+									file.path = newValue.path;
+									file.itemNumber = scope.itemNumber;
+									controller.$setViewValue(file);
+									controller.$render();
+								}
 							}
 						}
 					}, true);
@@ -37,7 +45,11 @@
 						angular.forEach(dirs, function (dir) {
 							if (dir.name === path[0]) {
 								dir.displayed = true;
+								dir.selected = true;
 								path.shift();
+								if(path.length === 0) {
+									scope.itemNumber = dir.dirs.length + dir.files.length;
+								}
 								stepToPath(dir.dirs, path);
 							}
 						});

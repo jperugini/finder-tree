@@ -15,8 +15,6 @@
 		vm.selectFolder = selectFolder;
 
 		vm.breadcrumbMove = breadcrumbMove;
-		
-		vm.resetSelected = resetSelected;
 
 		vm.hardDrive = {
 			'dirs': [
@@ -177,10 +175,6 @@
 			}
 		};
 		
-		function resetSelected() {
-			vm.testSelect = {};
-			vm.testSelect.path = [];
-		};
 	}
 
 })();

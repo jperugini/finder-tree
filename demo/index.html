@@ -47,9 +47,9 @@
 
 				<finder-tree data="demo.selectedFolder.structure" ng-model="demo.testSelect" style="height: 300px;"></finder-tree>
 				<div class="ft-footer">
-					<span class="ft_breadcrumb" data-ng-click="demo.resetSelected()">
+					<span class="ft_breadcrumb" data-ng-click="demo.testSelect.path = []">
 						<img data-ng-src="{{demo.selectedFolder.img}}" /> {{demo.selectedFolder.name}}
-						<i class="mac_caret_right" data-ng-if="demo.testSelect.path.length > 0"></i>
+						<i class="mac_caret_right" data-ng-if="demo.testSelect.path.length > 0 || demo.testSelect.name"></i>
 					</span>
 					<span data-ng-repeat="item in demo.testSelect.path track by $index" data-ng-click="demo.breadcrumbMove($index)" class="ft_breadcrumb">
 						<i class="ft_folder"></i>{{item}} <i class="mac_caret_right" data-ng-if="!$last || demo.testSelect.name"></i>
