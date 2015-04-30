@@ -41,6 +41,10 @@
 	padding-left: 10px;
 }
 
+.ft_breadcrumb {
+	cursor: pointer;
+}
+
 .panel {
 	width: 1000px;
 }

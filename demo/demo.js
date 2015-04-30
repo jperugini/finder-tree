@@ -14,6 +14,10 @@
 
 		vm.selectFolder = selectFolder;
 
+		vm.breadcrumbMove = breadcrumbMove;
+		
+		vm.resetSelected = resetSelected;
+
 		vm.hardDrive = {
 			'dirs': [
 				{
@@ -21,7 +25,7 @@
 					'dirs': [{
 							'name': 'Hello/sub',
 							'dirs': [{
-								'name': 'Hello/sub',
+								'name': 'Hello/sub1',
 								'dirs': [],
 								'files': [{
 									'name': 'Hello/Sub1'
@@ -32,7 +36,7 @@
 							}]
 						},
 						{
-							'name': 'Hello/sub',
+							'name': 'Hello/sub2',
 							'dirs': [],
 							'files': [{
 								'name': 'Very very very long Hello/Sub2'
@@ -163,6 +167,19 @@
 			vm.testSelect = {};
 			vm.selectedFolder = folder;
 			vm.testSelect.itemNumber = folder.numberItem;
+		};
+
+		function breadcrumbMove(index) {
+			if (angular.isDefined(vm.testSelect.path)) {
+				for (var i = vm.testSelect.path.length; i > index; i--) {
+					vm.testSelect.path.splice(i, 1);
+				}
+			}
+		};
+		
+		function resetSelected() {
+			vm.testSelect = {};
+			vm.testSelect.path = [];
 		};
 	}
 

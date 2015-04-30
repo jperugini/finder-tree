@@ -144,6 +144,7 @@
 							scope.data.displayed = true;
 						}
 					});
+
 				});
 			}
 		};

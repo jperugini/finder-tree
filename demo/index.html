@@ -47,10 +47,12 @@
 
 				<finder-tree data="demo.selectedFolder.structure" ng-model="demo.testSelect" style="height: 300px;"></finder-tree>
 				<div class="ft-footer">
-					<img data-ng-src="{{demo.selectedFolder.img}}" /> {{demo.selectedFolder.name}}
-					<i class="mac_caret_right"></i>
-					<span data-ng-repeat="item in demo.testSelect.path track by $index">
-						<i class="ft_folder"></i>{{item}}<i class="mac_caret_right"></i>
+					<span class="ft_breadcrumb" data-ng-click="demo.resetSelected()">
+						<img data-ng-src="{{demo.selectedFolder.img}}" /> {{demo.selectedFolder.name}}
+						<i class="mac_caret_right" data-ng-if="demo.testSelect.path.length > 0"></i>
+					</span>
+					<span data-ng-repeat="item in demo.testSelect.path track by $index" data-ng-click="demo.breadcrumbMove($index)" class="ft_breadcrumb">
+						<i class="ft_folder"></i>{{item}} <i class="mac_caret_right" data-ng-if="!$last || demo.testSelect.name"></i>
 					</span>
 					<span ng-if="demo.testSelect.name">
 						<i class="ft_file"></i>{{demo.testSelect.name}}
