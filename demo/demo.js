@@ -17,6 +17,7 @@
 		vm.breadcrumbMove = breadcrumbMove;
 
 		vm.hardDrive = {
+			'name': 'Hard Drive',
 			'dirs': [
 				{
 					'name': 'Hello',
@@ -74,6 +75,7 @@
 		};
 
 		vm.homeFolder = {
+			'name': 'Home',
 			'dirs': [
 				{
 					'name': 'Documents',
@@ -168,6 +170,7 @@
 		};
 
 		function breadcrumbMove(index) {
+			vm.testSelect.manual = true;
 			if (angular.isDefined(vm.testSelect.path)) {
 				for (var i = vm.testSelect.path.length; i > index; i--) {
 					vm.testSelect.path.splice(i, 1);

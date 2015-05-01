@@ -22,18 +22,25 @@
 
 	<div data-ng-cloak class="content">
 
-		<h2>Raw Finder-Tree</h2>
-
+		<h2>Raw Finder-Tree</h2> Search:
+		<input type="text" data-ng-model="demo.searchText" placeholder="Search" />
 		<p>Selected: {{demo.testSelect.name}}</p>
 		<p>Path: {{demo.testSelect.path}}</p>
 
-		<finder-tree data="demo.hardDrive" ng-model="demo.testSelect" style="height: 200px;font-size: large;"></finder-tree>
+		<finder-tree data="demo.hardDrive" ng-model="demo.testSelect" search-filter="demo.searchText" style="font-size: large;"></finder-tree>
 
 		<h2>Templated Finder-Tree</h2>
 
 		<div class="panel panel-default" data-ng-init="demo.selectedFolder = demo.listFolder[0]">
 			<div class="panel-heading">
 				<strong>{{demo.testSelect.path.slice(-1)[0] || demo.selectedFolder.name}}</strong>
+				<div class="searchField">
+					<div class="light">
+						<form>
+							<span><input type="text" class="search rounded" data-ng-model="demo.macsearch" placeholder="Search..."></span>
+						</form>
+					</div>
+				</div>
 			</div>
 			<div class="panel-body">
 
@@ -45,7 +52,7 @@
 					</ul>
 				</div>
 
-				<finder-tree data="demo.selectedFolder.structure" ng-model="demo.testSelect" style="height: 300px;"></finder-tree>
+				<finder-tree data="demo.selectedFolder.structure" ng-model="demo.testSelect" search-filter="demo.macsearch" style="height: 300px;"></finder-tree>
 				<div class="ft-footer">
 					<span class="ft_breadcrumb" data-ng-click="demo.testSelect.path = []">
 						<img data-ng-src="{{demo.selectedFolder.img}}" /> {{demo.selectedFolder.name}}
