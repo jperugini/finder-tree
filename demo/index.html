@@ -54,7 +54,7 @@
 
 				<finder-tree data="demo.selectedFolder.structure" ng-model="demo.testSelect" search-filter="demo.macsearch" style="height: 300px;"></finder-tree>
 				<div class="ft-footer">
-					<span class="ft_breadcrumb" data-ng-click="demo.testSelect.path = []">
+					<span class="ft_breadcrumb" data-ng-click="demo.testSelect.path = []; demo.testSelect.manual = true">
 						<img data-ng-src="{{demo.selectedFolder.img}}" /> {{demo.selectedFolder.name}}
 						<i class="mac_caret_right" data-ng-if="demo.testSelect.path.length > 0 || demo.testSelect.name"></i>
 					</span>

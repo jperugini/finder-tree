@@ -72,16 +72,15 @@
 					},
 					function (newValue, oldValue) {
 						if (newValue.manual) {
-							if (oldValue.path.length > newValue.path.length) {
-								scope.$$childHead.resetDisplay(scope.data.dirs);
-								stepToPath(scope.data.dirs, newValue.path.slice());
-								scope.$$childHead.resetFileDisplay(scope.data);
-								var file = {};
-								file.path = newValue.path;
-								file.itemNumber = scope.itemNumber;
-								controller.$setViewValue(file);
-								controller.$render();
-							}
+							scope.$$childHead.resetDisplay(scope.data.dirs);
+							stepToPath(scope.data.dirs, newValue.path.slice());
+							scope.$$childHead.resetFileDisplay(scope.data);
+							var file = {};
+							file.path = newValue.path;
+							file.itemNumber = scope.itemNumber;
+							delete newValue.manual;
+							controller.$setViewValue(file);
+							controller.$render();
 						}
 					}, true);
 
