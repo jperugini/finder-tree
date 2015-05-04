@@ -16,7 +16,7 @@
 			},
 			transclude: true,
 			replace: true,
-			template: '<div style="overflow: auto">' +
+			template: '<div>' +
 				'<finder-tree-wrapped data="data" ng-model="dataModel" data-ng-hide="searchFilter" data-ng-transclude>' +
 				'</finder-tree-wrapped>' +
 				'<div class="finder-tree" data-ng-if="searchFilter"><ul resizable r-directions="[\'right\']">' +
@@ -71,16 +71,23 @@
 						return controller.$modelValue;
 					},
 					function (newValue, oldValue) {
-						if (newValue.manual) {
-							scope.$$childHead.resetDisplay(scope.data.dirs);
-							stepToPath(scope.data.dirs, newValue.path.slice());
-							scope.$$childHead.resetFileDisplay(scope.data);
-							var file = {};
-							file.path = newValue.path;
-							file.itemNumber = scope.itemNumber;
-							delete newValue.manual;
-							controller.$setViewValue(file);
-							controller.$render();
+						if (angular.isDefined(newValue)) {
+							// Check for path change (example: breadcrumb, ...)
+							if (newValue.manual) {
+								// Get function from child scope to reset display
+								scope.$$childHead.resetDisplay(scope.data.dirs);
+								// Remove first item of the path to step in the tree
+								var pathToStep = newValue.path.slice();
+								pathToStep.shift();
+								stepToPath(scope.data.dirs, pathToStep);
+								scope.$$childHead.resetFileDisplay(scope.data);
+								var file = {};
+								file.path = newValue.path;
+								file.itemNumber = scope.itemNumber || scope.data.dirs.length + scope.data.files.length;
+								delete newValue.manual;
+								controller.$setViewValue(file);
+								controller.$render();
+							}
 						}
 					}, true);
 

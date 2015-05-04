@@ -1,25 +1,26 @@
 {
-  "name": "findertree",
-  "version": "0.1.0",
-  "authors": [
-    {
-      "name": "Julien Peru",
-      "email": "julien.perugini@gmail.com"
+	"name": "findertree",
+	"version": "0.1.0",
+	"authors": [
+		{
+			"name": "Julien Peru",
+			"email": "julien.perugini@gmail.com"
     }
   ],
-  "main": ["dist/findertree.js"],
-  "ignore": [
+	"main": ["dist/findertree.js"],
+	"ignore": [
     "src",
     "test",
     "Gruntfile.js",
     "**/.*"
   ],
-  "dependencies": {},
-  "devDependencies": {
-    "angular-mocks": ">=1.2.0",
-    "angular-scenario": ">=1.2.0",
-    "angular": ">=1.2.0",
-    "angular-resource": ">=1.2.0",
-    "angular-sanitize": ">=1.2.0"
-  }
+	"dependencies": {},
+	"devDependencies": {
+		"angular-mocks": ">=1.2.0",
+		"angular-scenario": ">=1.2.0",
+		"angular": ">=1.2.0",
+		"angular-resource": ">=1.2.0",
+		"angular-sanitize": ">=1.2.0",
+		"ngDialog": "latest"
+	}
 }

@@ -127,7 +127,7 @@
 							}
 						}
 						if (targetScope.$parent.hasOwnProperty('level')) {
-							while (targetScope.$parent.level !== 0) {
+							while (targetScope.$parent.level >= 0) {
 								targetScope = targetScope.$parent;
 								if (targetScope.hasOwnProperty('data')) {
 									path.push(targetScope.data.name);

@@ -13,6 +13,8 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="../dist/finder-tree.css">
+	<link rel="stylesheet" type="text/css" href="../bower/ngDialog/css/ngDialog.min.css">
+	<link rel="stylesheet" type="text/css" href="../bower/ngDialog/css/ngDialog-theme-default.min.css">
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="demo.css">
@@ -27,7 +29,7 @@
 		<p>Selected: {{demo.testSelect.name}}</p>
 		<p>Path: {{demo.testSelect.path}}</p>
 
-		<finder-tree data="demo.hardDrive" ng-model="demo.testSelect" search-filter="demo.searchText" style="font-size: large;"></finder-tree>
+		<finder-tree data="demo.hd" ng-model="demo.testSelect" search-filter="demo.searchText" style="font-size: large;"></finder-tree>
 
 		<h2>Templated Finder-Tree</h2>
 
@@ -52,24 +54,27 @@
 					</ul>
 				</div>
 
-				<finder-tree data="demo.selectedFolder.structure" ng-model="demo.testSelect" search-filter="demo.macsearch" style="height: 300px;"></finder-tree>
+				<finder-tree data="demo.selectedFolder.structure" ng-model="demo.tpltestSelect" search-filter="demo.macsearch" style="overflow: auto; height: 300px;"></finder-tree>
 				<div class="ft-footer">
-					<span class="ft_breadcrumb" data-ng-click="demo.testSelect.path = []; demo.testSelect.manual = true">
+					<span class="ft_breadcrumb" data-ng-click="demo.selectFolder(demo.selectedFolder) ; demo.tpltestSelect.manual = true">
 						<img data-ng-src="{{demo.selectedFolder.img}}" /> {{demo.selectedFolder.name}}
-						<i class="mac_caret_right" data-ng-if="demo.testSelect.path.length > 0 || demo.testSelect.name"></i>
+						<i class="mac_caret_right" data-ng-if="demo.tpltestSelect.path.length > 1 || demo.tpltestSelect.name"></i>
 					</span>
-					<span data-ng-repeat="item in demo.testSelect.path track by $index" data-ng-click="demo.breadcrumbMove($index)" class="ft_breadcrumb">
-						<i class="ft_folder"></i>{{item}} <i class="mac_caret_right" data-ng-if="!$last || demo.testSelect.name"></i>
+					<span data-ng-repeat="item in demo.tpltestSelect.path track by $index" data-ng-click="demo.breadcrumbMove($index)" class="ft_breadcrumb" data-ng-if="!$first">
+						<i class="ft_folder"></i>{{item}} <i class="mac_caret_right" data-ng-if="!$last || demo.tpltestSelect.name"></i>
 					</span>
-					<span ng-if="demo.testSelect.name">
-						<i class="ft_file"></i>{{demo.testSelect.name}}
+					<span ng-if="demo.tpltestSelect.name">
+						<i class="ft_file"></i>{{demo.tpltestSelect.name}}
 					</span>
 				</div>
 			</div>
 			<div class="panel-footer">
-				{{demo.testSelect.itemNumber}} items
+				{{demo.tpltestSelect.itemNumber}} items
 			</div>
 		</div>
+
+		<button type="button" data-ng-click="demo.newFolder()">New folder</button>
+		<button type="button" data-ng-click="demo.newFile()">New file</button>
 
 	</div>
 
@@ -77,8 +82,22 @@
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
 	<script src="../bower/angular/angular.js"></script>
+	<script src="../bower/ngDialog/js/ngDialog.min.js"></script>
 	<script src="demo.js"></script>
 	<script src="../dist/finder-tree.js"></script>
 </body>
 
 </html>
+
+<script type="text/ng-template" id="modalDialogId">
+	<div class="ngdialog-message">
+		<h3>{{ngDialogData.type}}</h3>
+		<p>
+			<input type="text" ng-model="confirmValue" placeholder="{{ngDialogData.type}}" />
+		</p>
+	</div>
+	<div class="ngdialog-buttons">
+		<button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm(confirmValue)">Confirm</button>
+		<button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog('Cancel')">Cancel</button>
+	</div>
+</script>
