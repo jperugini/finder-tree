@@ -60,6 +60,11 @@
 	position: relative;
 }
 
+.tool-bar {
+	float: left !important;
+	margin-left: 20px;
+}
+
 .panel-footer {
 	text-align: center;
 	background-color: #b4b4b4 !important;

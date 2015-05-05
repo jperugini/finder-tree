@@ -79,7 +79,7 @@
 				'name': 'Hello/Sub1'
 			}]
 		};
-				
+
 		vm.hd = angular.copy(vm.hardDrive);
 
 		vm.homeFolder = {
@@ -176,7 +176,7 @@
 			vm.tpltestSelect.path = [];
 			vm.tpltestSelect.path.push(folder.name);
 		};
-		
+
 		selectFolder(vm.listFolder[0]);
 
 		function breadcrumbMove(index) {
@@ -189,54 +189,79 @@
 		};
 
 		function newFolder() {
-			ngDialog.openConfirm({
-				template: 'modalDialogId',
-				className: 'ngdialog-theme-default',
-				data: {
-					type: 'New Folder'
-				}
-			}).then(function (value) {
-				createItem(vm.testSelect.path, value, true);
-			}, function (reason) {
-				console.log('Modal promise rejected. Reason: ', reason);
-			});
+			openModal(0);
 		};
 
 		function newFile() {
+			openModal(1);
+		};
+
+		function openModal(type) {
+			var text;
+			var isFolder;
+			switch (type) {
+			case 0:
+				text = 'New Folder';
+				isFolder = true;
+				break;
+			case 1:
+				text = 'New File';
+				isFolder = false;
+				break;
+			case 2:
+				text = 'Rename';
+				break;
+			case 3:
+				text = 'Delete';
+				break;
+			default:
+				text = 'Error';
+				break;
+			}
 			ngDialog.openConfirm({
 				template: 'modalDialogId',
 				className: 'ngdialog-theme-default',
 				data: {
-					type: 'New File'
+					type: text
 				}
 			}).then(function (value) {
-				createItem(vm.testSelect.path, value, false);
+				var path = vm.tpltestSelect.path.slice();
+				path.shift();
+				stepTpPathToCreateItem(vm.selectedFolder.structure, path, value, isFolder, true);
 			}, function (reason) {
-				console.log('Modal promise rejected. Reason: ', reason);
+				// console.log('Modal promise rejected. Reason: ', reason);
 			});
-		};
+		}
 
-		function createItem(path, name, isFolder) {
+		function stepTpPathToCreateItem(data, path, name, isFolder, createItem) {
 			if (angular.isDefined(path) && path.length > 0) {
-				angular.forEach(vm.selectedFolder.dirs, function (dir) {
+				angular.forEach(data.dirs, function (dir) {
 					if (dir.name === path[0]) {
 						path.shift();
-						if (path.length === 0) {
+						if (path.length === 0 && createItem) {
 							addItem(dir, name, isFolder);
 						}
-						stepToPath(dir.dirs, name, path);
+						stepTpPathToCreateItem(dir, path, name, isFolder, false);
 					}
 				});
 			} else {
-				addItem(vm.selectedFolder.structure, name, isFolder);
+				if (createItem) {
+					addItem(data, name, isFolder);
+				}
 			}
 		};
-		
-		function addItem(dir, name, isFolder) {
-			if(isFolder) {
-				dir.dirs.push({name: name, dirs:[], files:[]});
+
+		function addItem(data, name, isFolder) {
+			if (isFolder) {
+				data.dirs.push({
+					name: name,
+					dirs: [],
+					files: []
+				});
 			} else {
-				dir.files.push({name: name});
+				data.files.push({
+					name: name
+				});
 			}
 		};
 
