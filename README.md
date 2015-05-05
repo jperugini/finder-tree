@@ -49,7 +49,7 @@ angular.module('app', [
 ### JSON Data
 
 - The JSON data passed to the directive should be a tree of elements:
-```json
+```
 {
 	'name': 'MainDir',
 	'dirs': [{
@@ -66,7 +66,7 @@ angular.module('app', [
 				}, {
 				....
 		}]
-	};
+	}
 }
 ```
 
@@ -74,7 +74,7 @@ angular.module('app', [
   - The file can contain any attribut you want, it will be passed to the model when the file is selected.
   - The path is an array containing the list of the folders name in which the file is located.
   
-```json
+```
 {
 	'name': 'File1',
 	'any other attribute': '',
