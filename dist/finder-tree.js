@@ -28,7 +28,11 @@
 
 })(angular);
 
-// jshint ignore: start
+/**
+* Angular resizable directive with small changes
+* https://github.com/Reklino/angular-resizable
+*/
+
 
 (function (angular, undefined) {
 
