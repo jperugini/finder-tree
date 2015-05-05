@@ -240,8 +240,9 @@
 						path.shift();
 						if (path.length === 0 && createItem) {
 							addItem(dir, name, isFolder);
+							createItem = false;
 						}
-						stepTpPathToCreateItem(dir, path, name, isFolder, false);
+						stepTpPathToCreateItem(dir, path, name, isFolder, createItem);
 					}
 				});
 			} else {
