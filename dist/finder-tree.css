@@ -80,7 +80,8 @@
 .finder-tree {
   height: inherit;
   display: inline-block;
-  vertical-align: top; }
+  vertical-align: top;
+  white-space: nowrap; }
   .finder-tree ul {
     display: inline-block;
     list-style-type: none;
@@ -94,7 +95,7 @@
     cursor: pointer;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: inherit;
+    width: 100%;
     position: relative; }
 
 .ft_clear {

@@ -2,6 +2,8 @@
 	height: inherit;
 	display: inline-block;
 	vertical-align: top;
+	white-space:nowrap;
+	
 	ul {
 		display: inline-block;
 		list-style-type: none;
@@ -16,7 +18,7 @@
 		cursor: pointer;
 		text-overflow: ellipsis;
 		white-space: nowrap;
-		width: inherit;
+		width: 100%;
 		position: relative;
 	}
 }

@@ -441,6 +441,7 @@
 	}
 
 })();
+
 (function () {
 
 	angular.module('finderTree.filters')

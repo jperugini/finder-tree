@@ -85,7 +85,7 @@ angular.module('app', [
 - search-filter is used to find specific document within any directory of your data. Pass it a string variable and it will filter the element for you.
 
 ## Theme
-You can edit the default Css file `finder-trees.css` if you want to make a new theme.
+You can edit the default Css file `finder-tree.css` if you want to make a new theme.
 
 ## Contributing
 Feel free to contribute by forking, opening issues, pull requests etc.
