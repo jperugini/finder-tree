@@ -4,7 +4,10 @@
 .resizable.no-transition {
   transition: none !important; }
 
-.rg-right, .rg-left, .rg-top, .rg-bottom {
+.rg-right,
+.rg-left,
+.rg-top,
+.rg-bottom {
   display: block;
   width: 14px;
   height: 14px;
@@ -26,13 +29,17 @@
   background-image: linear-gradient(left, lightgrey, white);
   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, StartColorStr='lightgrey', EndColorStr='white'); }
 
-.rg-right span, .rg-left span, .rg-top span, .rg-bottom span {
+.rg-right span,
+.rg-left span,
+.rg-top span,
+.rg-bottom span {
   position: absolute;
   box-sizing: border-box;
   display: block;
   border: 1px solid #ccc; }
 
-.rg-right span, .rg-left span {
+.rg-right span,
+.rg-left span {
   border-width: 0 1px;
   top: 50%;
   margin-top: -10px;
@@ -40,7 +47,8 @@
   height: 20px;
   width: 7px; }
 
-.rg-top span, .rg-bottom span {
+.rg-top span,
+.rg-bottom span {
   border-width: 1px 0;
   left: 50%;
   margin: 3.5px 0 0 -10px;

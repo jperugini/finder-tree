@@ -52,6 +52,7 @@
 						if (newV.length > 0) {
 							var filter = scope.filterOnName(newV);
 							var filteredList = $filter('filter')(scope.allFiles, filter);
+							scope.filteredFiles = filteredList;
 							file.itemNumber = filteredList.length;
 							controller.$setViewValue(file);
 							controller.$render();
