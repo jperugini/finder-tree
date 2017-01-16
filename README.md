@@ -69,6 +69,14 @@ angular.module('app', [
 	}
 }
 ```
+Each layer of the data structure MUST contain a property dirs and a property files even if this is empty. For example:
+'dirs': [{
+			'name': 'SubSubDir1',
+			'dirs': [],
+			'files': []
+			}, {
+			...
+}],
 
 - ng-model should be any variable in your controller. The directive will store the selected file and the path to the file.
   - The file can contain any attribut you want, it will be passed to the model when the file is selected.
