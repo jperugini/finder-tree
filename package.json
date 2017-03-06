@@ -25,7 +25,9 @@
     "package.json",
     "README.md"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "karma": "^1.5.0"
+  },
   "devDependencies": {
     "chai": "^1.9.1",
     "chai-jquery": "^1.2.3",
@@ -38,7 +40,7 @@
     "gulp-sass": "^2.1.0",
     "gulp-uglify": "^0.3.1",
     "jshint-stylish": "^0.4.0",
-    "karma": "^0.12.22",
+    "karma": "^1.5.0",
     "karma-chai": "^0.1.0",
     "karma-chai-jquery": "^1.0.0",
     "karma-chrome-launcher": "^0.1.4",
